@@ -1,0 +1,679 @@
+
+	
+	
+ 
+
+   
+         
+        
+         
+          
+         
+         
+          
+ 
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>舆情分析1</title>
+ <link href="../../gwtbase/css/base.css" rel="stylesheet" type="text/css"> 
+
+	<!--script type="text/javascript" src="../../gwtbase/js/base/jquery1.4.2.min.js"></script-->
+			<!--script type="text/javascript" src="../../script/jquery-1.5.1.min.js"></script-->
+		
+		
+		<link rel="stylesheet" href="./themes/base/jquery.ui.all.css">
+	<script src="./jquery-1.7.2.js"></script>
+	<script src="./ui/jquery.ui.core.js"></script>
+	<script src="./ui/jquery.ui.widget.js"></script>
+	<script src="./ui/jquery.ui.tabs.js"></script>
+		
+
+		<script type="text/javascript" src="./highcharts.js"></script>
+		<script type="text/javascript" src="./exporting.js"></script>
+			<link href="css/common.css" rel="stylesheet" type="text/css">
+			<link rel="stylesheet" type="text/css" href="css/contrastChart.css"/>
+<script type="text/javascript" src="js/contrastChart.js"></script>
+
+
+</head>
+<body>
+	
+	
+	
+	
+<div class="contrastChart">
+	<div class="chartList">
+    	<div class="chartListL">
+        	<div class="centerBg"></div>
+        	<ul>
+        					<li><span>网络媒体</span>(1140)条</li>
+				<li><span>中央报刊</span>(439)条</li>
+				<li><span>地方报刊</span>(62)条</li>
+				<li><span>中央电台</span>(0)条</li>
+				<li><span>地方电台</span>(0)条</li>
+				<li><span>新华通讯社</span>(0)条</li>
+				<li><span>中国新闻通讯社</span>(0)条</li>
+				
+				
+				<li><span>港澳台媒体</span>(188)条</li>
+				<li><span>境外媒体</span>(9)条</li>
+	
+				
+				<li><span>博客</span>(14)条</li>
+				<li><span>中央广播电台</span>(12)条</li>
+				<li><span>地方广播电台</span>(0)条</li>
+            
+            
+                
+            </ul>
+        </div>
+        <div class="chartListR">
+        	<!--div class="chartTitle"><span class="mediaTitle"></span></div-->
+            <div class="chart" id="c1"></div>
+        </div>
+        <div class="clear"></div>
+    </div>
+    
+    
+    
+    <div class="chartList">
+    	<div class="chartListL">
+        	<div class="centerBg"></div>
+        	<ul>
+        		
+        			
+									<li>
+             
+                
+                  <span class="word">广东</span>
+                	</li>
+									
+									<li>
+             
+                
+                  <span class="word">广州</span>
+                	</li>
+									
+            	<!--li>
+                	<span class="color c1"></span>
+                    <span class="num">818</span>
+                    <span class="word">荔湾</span>
+                </li-->
+           
+               
+            </ul>
+        </div>
+        <div class="chartListR">
+        	<!--div class="chartTitle"><span class="keywordContrastTitle"></span></div-->
+            
+            
+             <div class="chart" id="c_2"  ></div>
+        </div>
+        <div class="clear"></div>
+    </div>
+    
+    <div class="chartList">
+    	<div class="chartListL">
+        	<div class="centerBg"></div>
+        	<ul>
+        		
+        		
+									<li>
+             
+              
+                    <span class="word" ><a href="javascript:"  onclick="gotocodename('广东');" >广东</a></span>
+                	</li>
+									
+									<li>
+             
+              
+                    <span class="word" ><a href="javascript:"  onclick="gotocodename('广州');" >广州</a></span>
+                	</li>
+									
+							
+            
+             
+                <!--li>
+                	<span class="color canChoose onchoose c3"></span>
+                    <span class="num">450</span>
+                    <span class="word">萝岗</span>
+                </li-->
+             
+            </ul>
+        </div>
+        <div class="chartListR">
+        	<!--div class="chartTitle"><span class="keywordTrend"></span></div-->
+            <div class="chart" id="c_3"  ></div>
+            
+        </div>
+        <div class="clear"></div>
+    </div>
+    
+    <div class="chartList">
+    	<div class="chartListL">
+        	<div class="centerBg"></div>
+        	<ul>
+            	
+									<li>
+             
+              
+                    <span class="word"><a href="javascript:"  onclick="gotocodenamedirty('广东');" >广东</a></span>
+                	</li>
+									
+									<li>
+             
+              
+                    <span class="word"><a href="javascript:"  onclick="gotocodenamedirty('广州');" >广州</a></span>
+                	</li>
+									
+     
+            </ul>
+        </div>
+        <div class="chartListR">
+        	<!--div class="chartTitle"><span class="keywordElse"></span></div-->
+            <div class="chart" id="c_4" ></div>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+
+
+<script>
+	//crawlnames=		news,forum,shipin,blog,zhongyangmeiti,difangmeiti,zhongyangdiantai,difangdiantai,tongxunshe,gangaomeiti,jingwaimeiti,zhongyangguangbodiantai,difangguangbodiantai
+		//							网络媒体，论坛，视频，博客，中央报纸，地方报纸，中央电台，地方电台，通讯社，港澳媒体，境外媒体，中央广播电台，地方广播电台
+	
+	function goto(crawltype)
+	{
+		var turl ="";
+		var crawltypecode ="";
+		if(crawltype=="网络媒体")
+			crawltypecode ="news";
+		else if(crawltype=="论坛")
+			crawltypecode ="luntan";
+	
+		else if(crawltype=="博客")
+			crawltypecode ="boke";
+		else if(crawltype=="中央报刊")
+			crawltypecode ="zhongyangmeiti";
+		else if(crawltype=="地方报刊")
+			crawltypecode ="difangmeiti";
+		else if(crawltype=="中央电台")
+			crawltypecode ="zhongyangdiantai";
+		else if(crawltype=="地方电台")
+			crawltypecode ="difangdiantai";
+		else if(crawltype=="通讯社")
+			crawltypecode ="tongxunshe1";
+		else if(crawltype=="港澳媒体")
+			crawltypecode ="gangaomeiti";		
+		else if(crawltype=="境外媒体")
+			crawltypecode ="jingwaimeiti";		
+		else if(crawltype=="中央广播电台")
+			crawltypecode ="zhongyangguangbodiantai";		
+		else if(crawltype=="地方广播电台")
+			crawltypecode ="difangguangbodiantai";		
+
+		
+		turl ="searchitemx.jsp?type="+crawltypecode;
+			//			location.href = turl;
+		
+		parent.openNewTab(crawltype,'paper81',turl);
+				 
+	}
+	function gotocodename(exception)
+	{
+		
+		turl ="searchitemx.jsp?usesystemkeyword=1&codename="+exception;
+						//location.href = turl;
+		parent.openNewTab(exception,'paper81',turl);
+}
+function gotocodenamedirty(exception)
+	{
+		
+		turl ="searchitemx.jsp?isdirty=1&usesystemkeyword=1&codename="+exception;
+						//location.href = turl;
+		parent.openNewTab(exception,'paper81',turl);
+}
+
+	
+(function($){ // encapsulate jQuery
+
+
+
+var chart;
+$(document).ready(function() {
+	chart = new Highcharts.Chart({
+		chart: {
+			renderTo: 'c1',
+			plotBackgroundColor: null,
+			plotBorderWidth: null,
+			plotShadow: true
+		},
+		title: {
+			text: '今日舆情信息来源'
+		},
+		tooltip: {
+			formatter: function() {
+				return '<b>'+ this.point.name +'</b>: '+ this.percentage.toFixed(2) +' %';
+			}
+		},
+		plotOptions: {
+			pie: {
+				allowPointSelect: true,
+				cursor: 'pointer',
+				
+		
+				point: {
+					events: {
+						click: function() {
+								
+								goto(this.name);
+						
+						
+						}
+					}
+				},
+				
+				dataLabels: {
+					enabled: true,
+					color: '#000000',
+					connectorColor: '#000000',
+					formatter: function() {
+						return '<b>'+ this.point.name +'</b>: '+ this.percentage.toFixed(2) +' %';
+					}
+				}
+			}
+		},
+		series: [{
+			type: 'pie',
+			name: 'Browser share',
+		
+		
+		
+			data: [
+			{name:'网络媒体',  y: 1140},
+				
+				{
+					name: '中央报刊',
+					y: 439,
+				
+					sliced: true,
+					selected: true
+					
+				},
+				['地方报刊',    439],
+				['中央电台',     0],
+				['地方电台',   0],
+				
+					['通讯社',   0],
+				['港澳台媒体',    188],
+				['境外媒体',   9],
+				
+				
+				['论坛',     989],
+				['博客',   14]
+				
+				
+			]
+
+		
+
+		}]	
+			
+	});
+});
+
+
+})(jQuery);
+
+
+</script>
+
+
+
+<script>
+
+	
+	
+	
+(function($){ // encapsulate jQuery
+
+
+
+var chart;
+$(document).ready(function() {
+	chart = new Highcharts.Chart({
+		chart: {
+			renderTo: 'c_2',
+			plotBackgroundColor: null,
+			plotBorderWidth: null,
+			plotShadow: false
+		},
+		title: {
+			text: '所有检索的关键字信息比例图'
+		},
+		tooltip: {
+			formatter: function() {
+				return '<b>'+ this.point.name +'</b>: '+ this.percentage.toFixed(2) +' %';
+			}
+		},
+		plotOptions: {
+			pie: {
+				allowPointSelect: true,
+				cursor: 'pointer',
+				
+		
+				point: {
+					events: {
+						click: function() {
+									
+								 gotocodename(this.name);
+						
+						
+						}
+					}
+				},
+				
+				dataLabels: {
+					enabled: true,
+					color: '#000000',
+					connectorColor: '#000000',
+					formatter: function() {
+						return '<b>'+ this.point.name +'</b>: '+ this.percentage.toFixed(2) +' %';
+					}
+				}
+			}
+		},
+		series: [{
+			type: 'pie',
+			name: 'Browser share',
+	
+		/*
+			data: [
+			{name:'Firefox',  y: 45.0},
+				['IE',       26.8],
+				{
+					name: 'Chrome',
+					y: 12.8,
+					zgw:'32131',
+					sliced: true,
+					selected: true
+					
+				},
+				['Safari',    8.5],
+				['Opera',     6.2],
+				['Others',   0.7]
+			]
+		
+		(fdsarray[i]==null?0:fdsarray[i].getTotalcount())
+		*/
+		
+data: [['广东',1515],['广州',1718]]
+		}]	
+			
+	});
+});
+
+
+})(jQuery);
+
+
+</script>
+
+	
+
+<script type="text/javascript">
+
+(function($){ // encapsulate jQuery
+
+var chart;
+$(document).ready(function() {
+	chart = new Highcharts.Chart({
+		chart: {
+			renderTo: 'c_3',
+			type: 'line',
+			marginRight: 10,
+			marginBottom: 25
+		},
+		title: {
+			text: '与检索的关键字有关的信息',
+			x: -20 //center
+		},
+		subtitle: {
+			text: '',
+			x: -20
+		},
+		xAxis: {
+			reversed: false,
+			type: 'datetime',
+			dateTimeLabelFormats: {
+						year: '%Y年',
+						month: '%y年 %b',
+            day: '%b %e号',
+     
+						week:  '%b %e号'
+			
+				
+           
+        		},
+		
+			tickWidth: 0,
+			gridLineWidth: 1,
+			labels: {
+				align: 'left',
+				x: 3,
+				y: -3
+			}
+		},
+		yAxis: {
+			title: {
+				text: ' '
+			},
+			plotLines: [{
+				value: 0,
+				width: 1,
+				color: '#808080'
+			}]
+		},
+		tooltip: {
+			formatter: function() {
+					return '<b>'+ this.series.name +'</b><br/>'+
+					 Highcharts.dateFormat('%A, %b %e, %Y', this.x) +': '+ this.y +'条';
+			}
+		},
+		legend: {
+				align: 'top',
+			verticalAlign: 'top',
+			x: -10,
+			y: 100,
+			borderWidth: 0
+		},
+		
+	/*	series: [{
+			name: 'Tokyo',
+			data: [7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6]
+		}, {
+			name: 'New York',
+			data: [-0.2, 0.8, 5.7, 11.3, 17.0, 22.0, 24.8, 24.1, 20.1, 14.1, 8.6, 2.5]
+		}, {
+			name: 'Berlin',
+			data: [-0.9, 0.6, 3.5, 8.4, 13.5, 17.0, 18.6, 17.9, 14.3, 9.0, 3.9, 1.0]
+		}, {
+			name: 'London',
+			data: [3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8]
+		}]*/
+		
+	 	series: [
+	 		
+	{
+		name:'广东',
+		data: [[1355356800000,132],[1355443200000,59],[1355529600000,55],[1355788800000,79],[1355875200000,50],[1355961600000,182],[1356048000000,80],[1356134400000,32],[1356220800000,80],[1356307200000,65],[1356393600000,6],[1356480000000,52],[1356825600000,65],[1356912000000,27],[1357171200000,36]]
+	}
+		
+		,
+		
+	{
+		name:'广州',
+		data: [[1355529600000,38],[1355788800000,127],[1355875200000,69],[1355961600000,186],[1356048000000,149],[1356134400000,47],[1356220800000,114],[1356307200000,74],[1356393600000,6],[1356480000000,67],[1356825600000,57],[1356912000000,20],[1357171200000,46]]
+	}
+		
+		]
+		
+	});
+});
+
+})(jQuery);
+</script>
+<!-------------------------------------------------------------------------------------------->
+
+
+<script type="text/javascript">
+
+(function($){ // encapsulate jQuery
+
+var chart;
+$(document).ready(function() {
+	chart = new Highcharts.Chart({
+		chart: {
+			renderTo: 'c_4',
+			type: 'line',
+			marginRight: 10,
+			marginBottom: 25
+		},
+		title: {
+			text: '与检索的关键字有关的负面消息',
+			x: -20 //center
+		},
+		subtitle: {
+			text: '',
+			x: -20
+		},
+		xAxis: {
+			reversed: false,
+			type: 'datetime',
+			dateTimeLabelFormats: {
+						year: '%Y年',
+						month: '%y年 %b',
+            day: '%b %e号',
+     
+						week:  '%b %e号'
+			
+				
+           
+        		},
+		
+			tickWidth: 0,
+			gridLineWidth: 1,
+			labels: {
+				align: 'left',
+				x: 3,
+				y: -3
+			}
+		},
+		yAxis: {
+			title: {
+				text: ''
+			},
+			plotLines: [{
+				value: 0,
+				width: 1,
+				color: '#808080'
+			}]
+		},
+		tooltip: {
+			formatter: function() {
+					return '<b>'+ this.series.name +'</b><br/>'+
+					 Highcharts.dateFormat('%A, %b %e, %Y', this.x) +': '+ this.y +'条';
+			}
+		},
+		legend: {
+				align: 'top',
+			verticalAlign: 'top',
+			x: -10,
+			y: 100,
+			borderWidth: 0
+		},
+		
+	/*	series: [{
+			name: 'Tokyo',
+			data: [7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6]
+		}, {
+			name: 'New York',
+			data: [-0.2, 0.8, 5.7, 11.3, 17.0, 22.0, 24.8, 24.1, 20.1, 14.1, 8.6, 2.5]
+		}, {
+			name: 'Berlin',
+			data: [-0.9, 0.6, 3.5, 8.4, 13.5, 17.0, 18.6, 17.9, 14.3, 9.0, 3.9, 1.0]
+		}, {
+			name: 'London',
+			data: [3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8]
+		}]*/
+		//"+("+expression+") +("+Dirtyword+")"
+	 	series: [
+	 		
+	{
+		name:'广东',
+		data: [[1354492800000,46],[1354579200000,76],[1354665600000,82],[1354752000000,10],[1355097600000,84],[1355184000000,85],[1355270400000,1],[1355356800000,94],[1355443200000,27],[1355529600000,35],[1355788800000,50],[1355875200000,31],[1355961600000,102],[1356048000000,63],[1356134400000,25],[1356220800000,49],[1356307200000,43],[1356393600000,5],[1356480000000,39],[1356825600000,32],[1356912000000,7],[1357171200000,14]]
+	}
+		
+		,
+		
+	{
+		name:'广州',
+		data: [[1354579200000,26],[1354665600000,42],[1354752000000,15],[1355097600000,108],[1355184000000,100],[1355270400000,2],[1355356800000,104],[1355443200000,26],[1355529600000,19],[1355788800000,85],[1355875200000,36],[1355961600000,88],[1356048000000,99],[1356134400000,28],[1356220800000,66],[1356307200000,52],[1356393600000,3],[1356480000000,49],[1356825600000,30],[1356912000000,7],[1357171200000,15]]
+	}
+		
+		]
+		
+	});
+});
+
+})(jQuery);
+</script>
+</body>
+</html>
+<!-- zgw Fri Jan 04 00:46:42 CST 2013-->

@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<mapping>
+   <data sql="select * from products" />
+   <root name="pricingInfo" rowName="product">
+      <element name="description">
+          <attribute name="product_number">product_id</attribute>
+          <content>product_name</content>
+      </element>
+      <element name="quantity">
+	      <content>lower</content>
+	  </element>
+	  <element name="size">
+	      <content>size</content>
+	  </element>
+	  <element name="sizeUnit">
+	      <content>unit</content>
+	  </element>
+	  <element name="quantityPrice">
+	      <content>unit_price</content>
+	  </element>
+	</root>
+</mapping>
